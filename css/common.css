@@ -1,0 +1,35 @@
+body {
+    font-size: 100%;
+}
+.container {
+    width: 480px;
+
+    margin: 3px auto 3px auto;
+    text-align: center;
+}
+.title {
+    font-weight: bold;
+}
+.vacancy {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.line {
+    margin: 0 0 10px 0;
+}
+.confidence {
+    margin: 10px 0 0 0;
+    color: #b2b2b2;
+}
+.salary {
+    font-size: 120%;
+}
+#searchstring, .info {
+    color: gray;
+}
+#searchfield, .info {
+    margin: 0 0 10px 0;
+}
+.maintitle a {
+    color: black;
+}
