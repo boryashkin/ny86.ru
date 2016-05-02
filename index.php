@@ -46,10 +46,15 @@ $res = $db->getList($lrec['try_date']);
     </header>
     <section class="container">
         <? foreach ($res as $vacancy): ?>
+            <?php
+            $shortTime = DateTime::createFromFormat('Ymd', $vacancy['date']);
+            $formatD = $shortTime->format('d.m.Y');
+            ?>
             <div class="vacancy" id="<?=$vacancy['hash']?>">
                 <div class="line">
                     <span class="title"><a href="/vacancy/?id=<?=$vacancy['hash']?>"><?=$vacancy['profession']?></a></span>
                     <span class="salary"><?=number_format($vacancy['salary'], 0, '.', ',')?></span>
+                    <span class="addition"><?=$formatD?></span>
                 </div>
                 <span><?=$vacancy['organisation']?></span>
                 <span><?=$vacancy['additions']?></span>

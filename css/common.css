@@ -41,3 +41,9 @@ body {
 .margin-bottom {
     margin-bottom: 30px;
 }
+
+.addition {
+    color: #b2b2b2;
+    font-size: 0.8em;
+    float: right;
+}

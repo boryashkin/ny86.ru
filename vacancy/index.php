@@ -40,10 +40,15 @@ if (isset($res[0])) {
             <a href="/">показать другие вакансии</a>
         </div>
         <? foreach ($res as $vacancy): ?>
+            <?php
+            $shortTime = DateTime::createFromFormat('Ymd', $vacancy['date']);
+            $formatD = $shortTime->format('d.m.Y');
+            ?>
             <div class="vacancy" id="<?=$vacancy['hash']?>">
                 <div class="line">
                     <span class="title"><?=$vacancy['profession']?></span>
                     <span class="salary"><?=number_format($vacancy['salary'], 0, '.', ',')?></span>
+                    <span class="addition"><?=$formatD?></span>
                 </div>
                 <span><?=$vacancy['organisation']?></span>
                 <span><?=$vacancy['additions']?></span>
