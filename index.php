@@ -22,6 +22,7 @@ $res = $db->getList($lrec['try_date']);
     <meta name="viewport" content="width=device-width">
     <title>Работа в Нягани - ny86.ru</title>
     <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="/css/common.css">
     <script src="/js/common.js"></script>
     <script>

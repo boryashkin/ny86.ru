@@ -32,6 +32,7 @@ if (isset($res[0])) {
         <title>Ошибка 404</title>
     <? endif; ?>
     <meta charset="UTF-8" />
+    <link rel="shortcut icon" href="/favicon.ico"/>
     <link rel="stylesheet" type="text/css" href="/css/common.css">
 </head>
 <body>
