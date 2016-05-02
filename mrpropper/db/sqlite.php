@@ -46,6 +46,18 @@ class Model {
         return $res;
     }
 
+    public function getOne($id)
+    {
+        $stmt = $this->db->prepare('SELECT `profession`, `organisation`, `additions`, `salary`, `address`, `contacts`, `search`, `date` FROM `'. self::DB_PREFIX .'vacancies` WHERE `hash` = ? LIMIT 1');
+        $stmt->bindValue(1, $id, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $res = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        unset($stmt);
+
+        return $res;
+    }
+
     function getLastDateRec()
     {
         $stmt = $this->db->prepare('SELECT `try_date`, `file_date`, `hash_filedate` FROM `'. self::DB_PREFIX .'service` WHERE `try_date` = (SELECT max(try_date) FROM `'. self::DB_PREFIX .'service`)');

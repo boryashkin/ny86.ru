@@ -48,7 +48,7 @@ $res = $db->getList($lrec['try_date']);
         <? foreach ($res as $vacancy): ?>
             <div class="vacancy" id="<?=$vacancy['hash']?>">
                 <div class="line">
-                    <span class="title"><?=$vacancy['profession']?></span>
+                    <span class="title"><a href="/vacancy/?id=<?=$vacancy['hash']?>"><?=$vacancy['profession']?></a></span>
                     <span class="salary"><?=number_format($vacancy['salary'], 0, '.', ',')?></span>
                 </div>
                 <span><?=$vacancy['organisation']?></span>
