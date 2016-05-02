@@ -20,7 +20,11 @@ if (isset($res[0])) {
 ?>
 <html>
 <head>
-    <meta name="description" content="Вакансии в Нягани, работа в Нягани, центр занятости, биржа труда" />
+    <? if ($title): ?>
+        <meta name="description" content="Вакансия <?= $title?> в Нягани, а также много других на сайте. Вакансии центра занятости и отдельных предпринимателей." />
+    <? else: ?>
+        <meta name="description" content="Вакансии в Нягани, работа в Нягани, центр занятости, биржа труда" />
+    <? endif; ?>
     <meta name="viewport" content="width=device-width">
     <? if ($title): ?>
         <title><?=$title?> в Нягани</title>
