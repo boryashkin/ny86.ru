@@ -12,50 +12,54 @@ $res = $db->getOne($_GET['id']);
       contacts
       search
  */
+if (isset($res[0])) {
+    $title = $res[0]['profession'];
+} else {
+    header("HTTP/1.0 404 Not Found");
+}
 ?>
 <html>
 <head>
     <meta name="description" content="Вакансии в Нягани, работа в Нягани, центр занятости, биржа труда" />
     <meta name="viewport" content="width=device-width">
-    <title>Работа в Нягани - ny86.ru</title>
+    <? if ($title): ?>
+        <title><?=$title?> в Нягани</title>
+    <? else: ?>
+        <title>Ошибка 404</title>
+    <? endif; ?>
     <meta charset="UTF-8" />
     <link rel="stylesheet" type="text/css" href="/css/common.css">
-    <script src="/js/common.js"></script>
-    <script>
-        var vaclist = {
-            <?php
-                foreach ($res as $vac) {
-                ?>"<?=trim(preg_replace('/\s+|"|\'/', ' ', $vac['search']))?>": "<?=$vac['hash']?>",
-            <?
-            }
-            ?>
-        };
-    </script>
 </head>
 <body>
 <header class="container">
-    <h1 class="maintitle"><a href="http://vk.com/ny86pub">Работа в Нягани</a></h1>
-    <div id="search">
-        <input type="text" id="searchfield" placeholder="Поиск..."/>
-        <div id="searchstring"></div>
-        <div class="info"><?=$listdate?></div>
-    </div>
+    <h1 class="maintitle"><a href="/">Работа в Нягани</a></h1>
 </header>
 <section class="container">
-    <? foreach ($res as $vacancy): ?>
-        <div class="vacancy" id="<?=$vacancy['hash']?>">
-            <div class="line">
-                <span class="title"><?=$vacancy['profession']?></span>
-                <span class="salary"><?=number_format($vacancy['salary'], 0, '.', ',')?></span>
-            </div>
-            <span><?=$vacancy['organisation']?></span>
-            <span><?=$vacancy['additions']?></span>
-            <div class="confidence">
-                <span><?= nl2br($vacancy['address'])?></span>
-                <span><?= nl2br($vacancy['contacts'])?></span>
-            </div>
+    <? if ($title): ?>
+        <div class="title margin-bottom">
+            <a href="/">показать другие вакансии</a>
         </div>
-    <? endforeach; ?>
+        <? foreach ($res as $vacancy): ?>
+            <div class="vacancy" id="<?=$vacancy['hash']?>">
+                <div class="line">
+                    <span class="title"><?=$vacancy['profession']?></span>
+                    <span class="salary"><?=number_format($vacancy['salary'], 0, '.', ',')?></span>
+                </div>
+                <span><?=$vacancy['organisation']?></span>
+                <span><?=$vacancy['additions']?></span>
+                <div class="confidence">
+                    <span><?= nl2br($vacancy['address'])?></span>
+                    <span><?= nl2br($vacancy['contacts'])?></span>
+                </div>
+            </div>
+        <? endforeach; ?>
+    <? else: ?>
+        <h3>Ошибка 404</h3>
+        <div class="title margin-bottom">
+            Вакансия не найдена,
+            <a href="/">показать другие</a>
+        </div>
+    <? endif; ?>
 </section>
 <section class="container">
     <a href="http://borisd.ru">&copy; borisd.ru</a>

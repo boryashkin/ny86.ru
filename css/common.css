@@ -37,3 +37,7 @@ body {
 .title a {
     color: black;
 }
+
+.margin-bottom {
+    margin-bottom: 30px;
+}
