@@ -7,6 +7,14 @@ body {
     margin: 3px auto 3px auto;
     text-align: center;
 }
+@media screen
+and (max-width: 480px)
+{
+    .container {
+        width: 100%;
+    }
+}
+
 .title {
     font-weight: bold;
 }
